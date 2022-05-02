@@ -1,14 +1,6 @@
 import { useContext } from 'react';
 import { DataContext } from '../App';
-import { date } from './Navbar';
-
-export const ageCalc = (age: string) => {
-    let splitDate = date.split('-');
-    let splitAge = age.split('-');
-    let trueAge = parseInt(splitDate[2]) - parseInt(splitAge[2]);
-
-    return trueAge.toString();
-};
+import { ageCalc } from '../helper';
 
 const Table: React.FC = () => {
 	const { data, setData } = useContext(DataContext);
@@ -124,11 +116,6 @@ const Table: React.FC = () => {
 							))}
 					</tbody>
 				</table>
-			</div>
-			<div className='flex justify-end my-2 text-gray-500 gap-x-2'>
-				<button className='px-2 py-1 border'>prev</button>
-				<div className='px-2 py-1 border'>{data.length / 10}</div>
-				<button className='px-2 py-1 border'>next</button>
 			</div>
 		</div>
 	);

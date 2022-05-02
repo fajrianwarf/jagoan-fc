@@ -1,5 +1,4 @@
-let today = new Date();
-export let date = ('0' + today.getDate()).slice(-2) + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + today.getFullYear();
+import { date } from "../helper";
 
 function Navbar() {
 	return (
