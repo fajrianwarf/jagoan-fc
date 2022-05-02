@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import Swal from 'sweetalert2';
 import { DataContext } from '../App';
 import { ageCalc } from '../helper';
 
@@ -37,8 +38,13 @@ const Table: React.FC = () => {
 	const deleteMember = (member: any) => {
 		let dataFilter = data.filter((item: any) => item.id !== member.id);
 		setData(dataFilter);
+		Swal.fire(
+			'Success!',
+			'The data has been deleted!',
+			'success'
+		)
 	};
-
+	
 	return (
 		<div className='flex flex-col w-full'>
 			<div className='relative w-full overflow-x-auto rounded-md shadow-md'>

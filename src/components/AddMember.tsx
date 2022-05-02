@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 import { DataContext } from '../App';
-import { date } from '../helper';
+import { date, dobReverser } from '../helper';
 
 const AddMember: React.FC = () => {
 	const { data, setData } = useContext(DataContext);
@@ -8,16 +9,12 @@ const AddMember: React.FC = () => {
 	const [address, setAddress] = useState('');
 	const [gender, setGender] = useState('male');
 	const [dob, setDob] = useState('');
-
-	const dobReverser = (dob: any) => {
-		return dob.split('-').reverse().join('-');
-	};
-
+    
 	const sendData = () => {
-		const status = 'active';
+        const status = 'active';
 		let fullData = {};
 		let uniqId = new Date().getTime().toString();
-
+        
 		let reverseDob = dobReverser(dob);
 		fullData = {
 			id: uniqId,
@@ -28,9 +25,16 @@ const AddMember: React.FC = () => {
 			status,
 		};
 
-		setData([...data, fullData]);
+        if(name !== '' && address !== '' && gender !== '' && dob !== '') {
+            setData([...data, fullData]);
+            Swal.fire(
+                'Success!',
+                'The data has been added!',
+                'success'
+            )
+        }    
 	};
-
+    
 	return (
 		<div className='h-full px-4 py-6 border rounded-lg shadow-sm w-96'>
 			<div className='mb-2 font-medium text-center text-gray-700 uppercase'>

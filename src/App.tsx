@@ -3,6 +3,7 @@ import AddMember from './components/AddMember';
 import Graph from './components/Graph';
 import Navbar from './components/Navbar';
 import Table from './components/Table';
+// import useUpdateEffect from './customHook';
 import dummy from './dummy';
 
 export const DataContext = createContext<any>([]);
@@ -10,6 +11,7 @@ export const DataContext = createContext<any>([]);
 function App() {
 	const [data, setData] = useState(dummy);
 	const value = { data, setData };
+	// useUpdateEffect(() => alert('data successfully changed'), [data]);
 
 	return (
 		<DataContext.Provider value={value}>
