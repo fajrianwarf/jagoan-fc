@@ -2,16 +2,16 @@ import { useContext } from 'react';
 import { DataContext } from '../App';
 import { date } from './Navbar';
 
+export const ageCalc = (age: string) => {
+    let splitDate = date.split('-');
+    let splitAge = age.split('-');
+    let trueAge = parseInt(splitDate[2]) - parseInt(splitAge[2]);
+
+    return trueAge.toString();
+};
+
 const Table: React.FC = () => {
 	const { data, setData } = useContext(DataContext);
-
-	const ageCalc = (age: string) => {
-		let splitDate = date.split('-');
-		let splitAge = age.split('-');
-		let trueAge = parseInt(splitDate[2]) - parseInt(splitAge[2]);
-
-		return trueAge.toString();
-	};
 
 	const divisionCalc = (age: string) => {
 		const division = parseInt(ageCalc(age));
